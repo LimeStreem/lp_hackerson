@@ -43,15 +43,14 @@
 
 <script>
 $(function(){
-  activenumber = 1;
-  isActive = true;
+  var act = 1;
+  var isActive = true;
   $('.tab').on("click",function(){
-    number = $(this).data("number");
-    shiftPanel();
-
+    var num = $(this).data("number");
+    shiftPanel(num,act);
   });
 
-  var shiftPanel = function(){
+  var shiftPanel = function(number, activenumber){
     if(isActive){
       isActive = false;
       if(activenumber==number){
@@ -87,7 +86,7 @@ $(function(){
           isActive = true;
         });
       }
-      activenumber = number;
+      act = number;
     }
   }
 
