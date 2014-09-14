@@ -94,10 +94,17 @@ $(function(){
     if(true){
       switch(e.which){
         case 39: // Key[→]
-        console.log("migi")
+        if(act<6){
+          console.log("migi")
+          shiftPanel(act+1,act);
+        }
         break;
         case 37: // Key[←]
-        console.log("hidari")
+        if(1<act){
+          console.log("migi")
+          shiftPanel(act-1,act);
+          console.log("hidari")
+        }
         break;
         case 38: // Key[↑]
         console.log("ue")

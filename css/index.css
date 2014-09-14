@@ -50,11 +50,9 @@ body,html{
 
 /*---------------*/
 .wrap{
-  border-right: 70px solid white;
-  border-left: 70px solid white;
   z-index: 5;
-  position: relative;
-  width: auto;
+  width: 100%;
+  position: fixed;
 }
 
 .main-tabs{
