@@ -101,7 +101,6 @@ $(function(){
         break;
         case 37: // Key[←]
         if(1<act){
-          console.log("migi")
           shiftPanel(act-1,act);
           console.log("hidari")
         }
@@ -120,10 +119,16 @@ $(function(){
 
   $("body").touchwipe({
     wipeLeft: function() {
-      console.log("migi")
+      if(act<6){
+        console.log("migi")
+        shiftPanel(act+1,act);
+      }
     },
     wipeRight: function() {
+      if(1<act){
+        shiftPanel(act-1,act);
         console.log("hidari")
+      }
     },
     wipeUp: function() {
         console.log("ue")
