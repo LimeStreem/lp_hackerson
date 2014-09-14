@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="css/application.css" type="text/css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/touchwipe.js"></script>
+<script type="text/javascript" src="js/mvcontainer.js"></script>
+</head>
+
+<body>
+<!-- ________________________________________________________ -->
+<div id="tab1" class="panel active" >
+</div>
+<div id="tab2" class="panel" >
+</div>
+<div id="tab3" class="panel" >
+</div>
+<div id="tab4" class="panel" >
+</div>
+<div id="tab5" class="panel" >
+</div>
+<div id="tab6" class="panel" >
+</div>
+
+<!-- ________________________________________________________ -->
+<div class="wrap">
+  <div class="main-tabs">
+    <div class="tab-content">
+      <div class="tab" data-number="1"><div class="tabname">ABOUT　</div></div>
+      <div class="tab" data-number="2"><div class="tabname">WORKS　</div></div>
+      <div class="tab" data-number="3"><div class="tabname">MEMBER</div></div>
+      <div class="tab" data-number="4"><div class="tabname">BUSINESS</div></div>
+      <div class="tab" data-number="5"><div class="tabname">TWITTER</div></div>
+      <div class="tab" data-number="6"><div class="tabname">CONTACT</div></div>
+    </div>
+  </div>
+</div>
+<!-- ________________________________________________________ -->
+
+
+<script>
+$(function(){
+  activenumber = 1;
+  isActive = true;
+  $('.tab').on("click",function(){
+    if(isActive){
+      isActive = false;
+      number = $(this).data("number");
+      if(activenumber==number){
+        isActive = true;
+      }else if(activenumber<number){
+        $("#tab"+activenumber).animate({
+          left: '-100%'
+        }, 600, function() {
+          $(this).css({"left":"auto"});
+          $(this).removeClass("active");
+        });
+        $("#tab"+number).css({"right":"-100%"});
+        $("#tab"+number).addClass("active");
+        $("#tab"+number).animate({
+          right: '0'
+        }, 600, function() {
+          $(this).css({"left":"auto"});
+          isActive = true;
+        });
+      }else{
+        $("#tab"+activenumber).animate({
+          left: '100%'
+        }, 600, function() {
+          $(this).css({"left":"auto"});
+          $(this).removeClass("active");
+        });
+        $("#tab"+number).css({"right":"100%"});
+        $("#tab"+number).addClass("active");
+        $("#tab"+number).animate({
+          right: '0'
+        }, 600, function() {
+          $(this).css({"left":"auto"});
+          isActive = true;
+        });
+      }
+      activenumber = number;
+    }
+    console.log($(this).data("number"));
+  });
+
+  // $('.open-title').click(function(){
+  //   $('.open-title').css({"opacity":"0"});
+  //   $('.left-lp').addClass("open-l");
+  //   $('.right-lp').addClass("open-r");
+  //   $(window).on("transitionend",function(){
+  //     $('.lp').css({"display":"none"});
+  //   });
+  // });
+
+  $('html').keyup(function(e){
+    if(true){
+      switch(e.which){
+        case 39: // Key[→]
+        console.log("migi")
+        break;
+        case 37: // Key[←]
+        console.log("hidari")
+        break;
+        case 38: // Key[↑]
+        console.log("ue")
+        $('.left-lp').addClass("open-l")
+        $('.right-lp').addClass("open-r")
+        break;
+        case 40: // Key[↓]
+        console.log("sita")
+        break;
+      }
+    }
+  });
+
+  $("body").touchwipe({
+    wipeLeft: function() {
+      console.log("migi")
+    },
+    wipeRight: function() {
+        console.log("hidari")
+    },
+    wipeUp: function() {
+        console.log("ue")
+    },
+    wipeDown: function() {
+        console.log("sita")
+    },
+    min_move_x: 20,
+    min_move_y: 20,
+    preventDefaultEvents: false
+  });
+});
+</script>
+</body>
+</html>
