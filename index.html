@@ -46,13 +46,14 @@ $(function(){
   activenumber = 1;
   isActive = true;
   $('.tab').on("click",function(){
-    shiftPanel(this);
+    number = $(this).data("number");
+    shiftPanel();
+
   });
 
-  var shiftPanel = function(hoge){
+  var shiftPanel = function(){
     if(isActive){
       isActive = false;
-      number = $(hoge).data("number");
       if(activenumber==number){
         isActive = true;
       }else if(activenumber<number){
@@ -88,7 +89,6 @@ $(function(){
       }
       activenumber = number;
     }
-    console.log($(hoge).data("number"));
   }
 
   $('html').keyup(function(e){
